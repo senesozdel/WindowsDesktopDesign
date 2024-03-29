@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div style="background-image:url(./images/desktop.jpg); background-size: cover; width: 100%; height: 100vh;"
+    id="anaKapsayici">
+  
+    <div class="folders d-flex flex-column gap-3 w-25 pt-5 ps-2">
+      <div class="bilgisayarim ">
+        <button class="btn btn-outline-dark" onclick="bilgisayarBarSelected()" data-toggle="modal"
+          data-target="#bilgisayar"><i class="fa-solid fa-desktop fa-xl " style="color: white;"></i> </button>
+      </div>
+      <div class="belgelerim ">
+        <button class="btn btn-outline-dark  " onclick="filesBarSelected()" data-toggle="modal" data-target="#files"><i
+            class="fa-solid fa-file fa-xl" style="color: white;"></i> </button>
+      </div>
+      <div class="resimlerim">
+        <button class="btn btn-outline-dark  " onclick="albumBarSelected()" data-toggle="modal" data-target="#album"><i
+            class="fa-solid fa-image fa-xl" style="color: white;"></i> </button>
+      </div>
+      <div class="oyunlar">
+        <button class="btn btn-outline-dark " onclick="gamesBarSelected()" data-toggle="modal" data-target="#games"><i
+            class="fa-solid fa-gamepad fa-xl" style="color: white;"></i> </button>
+      </div>
+
+    </div>
+
+
+    <div class="bilgisyarim-modal">
+      <!-- Button trigger modal -->
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="bilgisayar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">My PC</h5>
+              <button type="button" onclick="bilgisayarBarClose()" class="btn bg-dark text-white" data-dismiss="modal"
+                aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body row">
+              <div id="hizli-erişim" class="col-4 border-right border-primary">
+                <p class="text-center">Easy Access</p>
+                <ul class="gap-2 d-flex flex-column">
+                  <li class="list-unstyled d-flex align-items-center justify-content-around ">
+                    <i class="fa-solid fa-gamepad fa-lg" style="color: #036ffc;"></i>
+                    <a class="text-decoration-none btn" data-toggle="modal" data-target="#games"
+                      onclick="gamesBarSelected()" data-dismiss="modal" href="#">Games</a>
+                  </li>
+                  <li class="list-unstyled d-flex align-items-center justify-content-around">
+                    <i class="fa-solid fa-file fa-lg" style="color: #036ffc;"></i>
+                    <a class="text-decoration-none btn" data-toggle="modal" data-target="#files"
+                      onclick="filesBarSelected()" data-dismiss="modal" href="#">Files</a>
+                  </li>
+                  <li class="list-unstyled d-flex align-items-center justify-content-around">
+                    <i class="fa-solid fa-image fa-lg" style="color: #036ffc;"></i>
+                    <a class="text-decoration-none btn" data-toggle="modal" data-target="#album"
+                      onclick="albumBarSelected()" data-dismiss="modal" href="#">Album</a>
+                  </li>
+                  <li class="list-unstyled d-flex align-items-center justify-content-around">
+                    <i class="fa-solid fa-desktop fa-lg " style="color: #036ffc;"></i>
+                    <a class="text-decoration-none btn" data-toggle="modal" data-target="#bilgisayar"
+                      onclick="bilgisayarSelected()" href="#">My PC</a>
+                  </li>
+                </ul>
+
+              </div>
+              <div class="col-8 border-left">
+                <div class="diskler d-flex gap-5">
+                  <div id="localdisk " class="row align-items-center ">
+                    <div class="col-4">
+                      <i class="fa-solid fa-hard-drive fa-xl"></i>
+                    </div>
+                    <div class="col-8 p-0">
+                      <h6>Windows(C:)</h6>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25"
+                          aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="harddisk" class="row align-items-center">
+                    <div class="col-4">
+                      <i class="fa-solid fa-hard-drive fa-xl"></i>
+                    </div>
+                    <div class="col-8 p-0">
+                      <h6>HardDisk(D:)</h6>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 75%"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- resim modalları 
+    1.resim modali   
+    -->
+    <div class="modal fade" id="desktopFullsize" tabindex="-2" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"></h5>
+          <button type="button" data-dismiss="modal" aria-label="Close" onclick="kucult()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img src="./images/desktop.jpg" style="max-width: 100%;" alt="">
+        </div>
+
+      </div>
+    </div>
+  </div>
+    <!-- dsad -->
+    
+    <!-- 2.resim modali   
+  --> 
+  <div class="modal fade" id="goletFullsize" tabindex="-2" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" data-dismiss="modal" aria-label="Close" onclick="kucult()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src="./images/golet.jpg" style="max-width: 100%;" alt="">
+      </div>
+
+    </div>
+  </div>
+</div>
+        <!-- 3.resim modali   
+  --> 
+  <div class="modal fade" id="plajFullsize" tabindex="-2" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" data-dismiss="modal" aria-label="Close" onclick="kucult()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src="./images/plaj.jpg" style="max-width: 100%;" alt="">
+      </div>
+
+    </div>
+  </div>
+</div>
+         <!-- 4.resim modali   
+        
+  --> 
+  <div class="modal fade" id="yansimaFullsize" tabindex="-2" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" data-dismiss="modal" aria-label="Close" onclick="kucult()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src="./images/yansima.jpg" style="max-width: 100%;" alt="">
+      </div>
+
+    </div>
+  </div>
+</div>
+         <!-- 5.resim modali   
+        
+  --> 
+  <div class="modal fade" id="iskeleFullsize" tabindex="-2" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" data-dismiss="modal" aria-label="Close" onclick="kucult()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src="./images/iskele.jpg" style="max-width: 100%;" alt="">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- 6.resim modali -->
+<div class="modal fade" id="ormanFullsize" tabindex="-2" role="dialog"  
+aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel"></h5>
+      <button type="button" data-dismiss="modal" aria-label="Close" onclick="kucult()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <img src="./images/orman.jpg" style="max-width: 100%;" alt="">
+    </div>
+
+  </div>
+</div>
+</div>
+ 
+    <div class="album-modal">
+      <!-- Button trigger modal -->
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="album" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="albumlong">My Galery</h5>
+              <button type="button" class="btn bg-dark text-white" data-dismiss="modal" aria-label="Close"
+                onclick="albumBarClose()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body row">
+              <div id="hizli-erişim" class="col-4 border-right border-primary">
+                <p class="text-center">Easy Access</p>
+                <ul class="gap-2 d-flex flex-column">
+                  <li class="list-unstyled d-flex align-items-center justify-content-around ">
+                    <i class="fa-solid fa-gamepad fa-lg" style="color: #036ffc;"></i>
+                    <a class="text-decoration-none btn" data-toggle="modal" data-target="#games"
+                      onclick="gamesBarSelected()" data-dismiss="modal" href="#">Games</a>
+                  </li>
+                  <li class="list-unstyled d-flex align-items-center justify-content-around">
+                    <i class="fa-solid fa-file fa-lg" style="color: #036ffc;"></i>
+                    <a class="text-decoration-none btn" data-toggle="modal" data-target="#files"
+                      onclick="filesBarSelected()"data-dismiss="modal" href="#">Files</a>
+                  </li>
+                  <li class="list-unstyled d-flex align-items-center justify-content-around">
+                    <i class="fa-solid fa-image fa-lg" style="color: #036ffc;"></i>
+                    <a class="text-decoration-none btn" data-toggle="modal" data-target="#album"
+                      onclick="albumBarSelected()" href="#">Album</a>
+                  </li>
+                  <li class="list-unstyled d-flex align-items-center justify-content-around">
+                    <i class="fa-solid fa-desktop fa-lg " style="color: #036ffc;"></i>
+                    <a class="text-decoration-none btn" data-toggle="modal" data-target="#bilgisayar"
+                      onclick="bilgisayarSelected()" data-dismiss="modal" href="#">My PC</a>
+                  </li>
+                </ul>
+
+              </div>
+              <div class="col-8 border-left row">
+                <div class="col-3  btn" style="width: 100px; height: 30px;" data-toggle="modal" onclick="buyut()"
+                  data-target="#desktopFullsize">
+                  <img style="max-width: 100%;" src="./images/desktop.jpg" alt="desktop">
+                  <p>desktop.jpg</p>
+
+                  <!-- Modal -->
+
+                  <!--  -->
+                </div>
+                <div class="col-3 btn  " data-toggle="modal" data-target="#goletFullsize" onclick="buyut()"
+                  style="width: 100px; height: 30px;">
+                  <img style="max-width: 100%;" src="./images/golet.jpg" alt="golet">
+                  <p>golet.jpg</p>
+
+
+                </div>
+
+                <div class="col-3 btn" data-toggle="modal" data-target="#plajFullsize" onclick="buyut()"
+                  style="width: 100px; height: 30px;">
+                  <img style="max-width: 100%;" src="./images/plaj.jpg" alt="plaj">
+                  <p>plaj.jpg</p>
+
+                </div>
+
+                <div class="col-3 btn" data-toggle="modal" data-target="#yansimaFullsize" onclick="buyut()"
+                  style="width: 100px; height: 30px;">
+                  <img style="max-width: 100%;" src="./images/yansima.jpg" alt="yansima">
+                  <p>yansima.jpg</p>
+
+
+                </div>
+
+                <div class="col-3 btn " data-toggle="modal" data-target="#iskeleFullsize" onclick="buyut()"
+                  style="width: 100px; height: 30px;">
+                  <img style="max-width: 100%;" src="./images/iskele.jpg" alt="iskele">
+                  <p>iskele.jpg</p>
+
+                </div>
+                <div class="col-3 btn" data-toggle="modal" data-target="#ormanFullsize"onclick="buyut()"
+                  style="width: 100px; height: 30px;">
+                  <img style="max-width: 100%;" src="./images/orman.jpg" alt="orman">
+                  <p>orman.jpg</p>
+ 
+                </div>
+
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="files-modal">
+      <div class="modal fade" id="files" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="albumlong">My Documents</h5>
+              <button onclick="filesBarClose()" type="button" class="btn bg-dark text-white" data-dismiss="modal"
+                aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body row">
+              <div id="hizli-erişim" class="col-4 border-right border-primary">
+                <p class="text-center">Easy Access</p>
+                <ul class="gap-2 d-flex flex-column">
+                  <li class="list-unstyled d-flex align-items-center justify-content-around ">
+                    <i class="fa-solid fa-gamepad fa-lg" style="color: #036ffc;"></i>
+                    <a class="text-decoration-none btn" data-toggle="modal" data-target="#games"
+                      onclick="gamesBarSelected()" href="#">Games</a>
+                  </li>
+                  <li class="list-unstyled d-flex align-items-center justify-content-around">
+                    <i class="fa-solid fa-file fa-lg" style="color: #036ffc;"></i>
+                    <a class="text-decoration-none btn" data-toggle="modal" data-target="#files"
+                      onclick="filesBarSelected()" href="#">Files</a>
+                  </li>
+                  <li class="list-unstyled d-flex align-items-center justify-content-around">
+                    <i class="fa-solid fa-image fa-lg" style="color: #036ffc;"></i>
+                    <a class="text-decoration-none btn" data-toggle="modal" data-target="#album"
+                      onclick="albumBarSelected()"data-dismiss="modal" href="#">Album</a>
+                  </li>
+                  <li class="list-unstyled d-flex align-items-center justify-content-around">
+                    <i class="fa-solid fa-desktop fa-lg " style="color: #036ffc;"></i>
+                    <a class="text-decoration-none btn" data-toggle="modal" data-target="#bilgisayar"
+                      onclick="bilgisayararSelected()"data-dismiss="modal" href="#">My PC</a>
+                  </li>
+                </ul>
+
+              </div>
+              <div class="col-8 border-left row">
+                <div class="col-12 d-flex gap-2 align-items-center btn" data-bs-toggle="modal"
+                  data-bs-target="#WarZonepdf"><i class="fa-solid fa-file fa-xs"></i> <a class="text-decoration-none"
+                    href="#"> WarZoneDesc.pdf</a>
+
+                  <!-- Button trigger modal -->
+                  <!-- Modal -->
+                  <div class="modal fade" id="WarZonepdf" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">WarZone </h1>
+                          <button type="button" class="btn-close" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          Warzone, popüler bir battle royale oyunudur ve oyuncular, devasa bir haritada birbirleriyle
+                          rekabet ederek hayatta kalmaya çalışırlar. Oyun, takım tabanlı stratejileri ve hızlı tempolu
+                          çatışmalarıyla bilinir.
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="col-12 d-flex gap-2 align-items-center btn " data-bs-toggle="modal"
+                  data-bs-target="#Soccerpdf"><i class="fa-solid fa-file fa-xs"></i><a class="text-decoration-none"
+                    href="#">Soccer.pdf</a>
+                  <div class="modal fade" id="Soccerpdf" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Soccer </h1>
+                          <button type="button" class="btn-close" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          Soccer, iki takımın karşılıklı olarak top kullanarak rakip kaleye gol atmaya çalıştığı heyecan
+                          verici bir takım sporudur. Dünya genelinde büyük bir popülerliğe sahip olan soccer, sadece
+                          beceri ve strateji değil, aynı zamanda oyuncuların dayanıklılığı ve takım koordinasyonunu
+                          gerektiren bir oyunudur.
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 d-flex gap-2 align-items-center btn" data-bs-toggle="modal"
+                  data-bs-target="#SpeedyBallpdf"><i class="fa-solid fa-file fa-xs"></i><a
+                    class="text-decoration-none" href="#">SpeedyBall.pdf</a>
+                  <div class="modal fade" id="SpeedyBallpdf" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">SpeedyBall</h1>
+                          <button type="button" class="btn-close" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          SpeedyBall, hızlı tempolu bir masa tenisi oyunudur, oyuncular rakiplerine karşı yüksek hızda
+                          rekabet ederler ve hünerlerini kullanarak topu rakip sahaya atarlar. Oyun, refleksleri,
+                          stratejiyi ve hızlı düşünme becerilerini bir araya getirerek oyunculara dinamik ve eğlenceli
+                          bir masa tenisi deneyimi sunar.
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="games-modal">
+      <div class="modal fade" id="games" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="albumlong">My Games</h5>
+              <button type="button" onclick="gamesBarClose()" class="btn bg-dark text-white" data-dismiss="modal"
+                aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body row">
+              <div id="hizli-erişim" class="col-4 border-right border-primary">
+                <p class="text-center">Easy Access</p>
+                <ul class="gap-2 d-flex flex-column">
+                  <li class="list-unstyled d-flex align-items-center justify-content-around ">
+                    <i class="fa-solid fa-gamepad fa-lg" style="color: #036ffc;"></i>
+                    <a class="text-decoration-none btn" data-toggle="modal" data-target="#games"
+                      onclick="gamesBarSelected()" href="#">Games</a>
+                  </li>
+                  <li class="list-unstyled d-flex align-items-center justify-content-around">
+                    <i class="fa-solid fa-file fa-lg" style="color: #036ffc;"></i>
+                    <a class="text-decoration-none btn" data-toggle="modal" data-target="#files"
+                      onclick="filesBarSelected()" data-dismiss="modal" href="#">Files</a>
+                  </li>
+                  <li class="list-unstyled d-flex align-items-center justify-content-around">
+                    <i class="fa-solid fa-image fa-lg" style="color: #036ffc;"></i>
+                    <a class="text-decoration-none btn" data-toggle="modal" data-target="#album"
+                      onclick="albumBarSelected()" data-dismiss="modal" href="#">Album</a>
+                  </li>
+                  <li class="list-unstyled d-flex align-items-center justify-content-around">
+                    <i class="fa-solid fa-desktop fa-lg " style="color: #036ffc;"></i>
+                    <a class="text-decoration-none btn" data-toggle="modal" data-target="#bilgisayar"
+                      onclick="bilgisayarSelected()" data-dismiss="modal" href="#">My PC</a>
+                  </li>
+                </ul>
+
+              </div>
+              <div class="col-8 border-left row">
+       
+
+
+                 
+
+
+
+                
+                <div id="accordion">
+                  <div class="card">
+                    <div class="card-header" id="headingOne">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                          <i class="fa-solid fa-gun fa-xs"></i>  WarZone.exe
+                        </button>
+                      </h5>
+                    </div>
+                
+                    <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                      <div class="card-body" style="max-width: 100%; max-height: 100%; overflow: hidden;">
+                        
+                <video class="video" width="240" height="150" controls autoplay>
+                  <source src="./videos/Official Trailer _ Call of Duty_ Warzone.mp4" type="video/mp4">
+                 
+                </video>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header" id="headingTwo">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          <i class="fa-solid fa-bowling-ball fa-xs"></i> Soccer.exe
+                        </button>
+                      </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                      <div class="card-body" style="max-width: 100%; max-height: 100%; overflow: hidden;">
+                        
+                        <video class="video" width="240" height="150" controls autoplay>
+                          <source src="./videos/soccer.mp4" type="video/mp4">
+                         
+                        </video>
+                              </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header" id="headingThree">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          <i class="fa-solid fa-table-tennis-paddle-ball fa-xs"> </i> SpeedyBall.exe
+                        </button>
+                      </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                      <div class="card-body" style="max-width: 100%; max-height: 100%; overflow: hidden;">
+                        
+                        <video class="video" width="240" height="150" controls autoplay>
+                          <source src="./videos/tabletennis.mp4" type="video/mp4">
+                         
+                        </video>
+                              </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <div id="baslat" class=" container w-50 bg-dark text-white rounded-2 flex-column "
+      style="display:none; position: absolute; bottom: 50px; left: 25%;">
+      <div>
+        <button onclick="baslatKapat()" class="btn "> <i class="fa-regular fa-circle-xmark fa-xl"
+            style="color: #af647e;"></i></button>
+
+      </div>
+      <div class="row p-3 gap-3 justify-content-center">
+        <div class="col-4 text-center btn btn-primary" onclick="filesBarSelected()"  data-toggle="modal" data-target="#files"><i class="fa-regular fa-file fa-lg"></i></div>
+        <div class="col-4 text-center btn-light btn" ><i class="fa-solid fa-gear fa-xl"></i></div>
+        <div class="col-4 text-center  btn btn-primary" onclick="gamesBarSelected()"  data-toggle="modal" data-target="#games"> <i class="fa-solid fa-gamepad fa-xl"></i></div>
+        <div class="col-4 text-center   btn-light btn"><i class="fa-solid fa-globe fa-xl"></i></div>
+        <div class="col-4 text-center  btn btn-primary" onclick="albumBarSelected()"  data-toggle="modal" data-target="#album"><i class="fa-solid fa-image fa-xl"></i></div>
+        <div class="col-4 text-center  btn btn-primary" onclick="bilgisayarBarSelected()"  data-toggle="modal" data-target="#bilgisayar"><i class="fa-solid fa-desktop  fa-xl"></i></div>
+      </div>
+      <hr>
+      <div class="footer d-flex justify-content-around p-3">
+        <div class=" d-flex gap-2 align-items-center">
+          <i class="fa-regular fa-user fa-xl "></i>
+          <h6 class="m-0">Salih Enes ÖZDEL</h6>
+        </div>
+        <div class="power btn btn-danger " onclick="pcKapat()">
+          <i class="fa-solid fa-power-off fa-xl"></i>
+        </div>
+
+      </div>
+
+    </div>
+
+    <nav class="w-100 bg-light d-flex justify-content-around align-items-center"
+      style="height: 50px; position: absolute; bottom: 0;">
+      <div class="left">
+        <button onclick="baslatGoster()" class="btn "> <i class="fa-brands fa-windows fa-xl"
+            style="color: #af647e;"></i></button>
+
+      </div>
+      <div class="middle d-flex gap-3">
+
+        <a class="btn" data-toggle="modal" data-target="#album" id="albumBar" onclick="albumBarSelected()"> <i
+            class="fa-solid fa-image fa-xl" style="color: #af647e;"></i></a>
+        <a class="btn" data-toggle="modal" data-target="#bilgisayar" id="bilgisayarBar"
+          onclick="bilgisayarBarSelected()"> <i class="fa-solid fa-desktop fa-xl " style="color: #af647e;"></i> </a>
+        <a class="btn" data-toggle="modal" data-target="#games" id="gamesBar" onclick="gamesBarSelected()"> <i
+            class="fa-solid fa-gamepad fa-lg" style="color: #af647e;"></i></a>
+        <a class="btn" data-toggle="modal" data-target="#files" id="filesBar" onclick="filesBarSelected()"> <i
+            class="fa-solid fa-file fa-xl" style="color: #af647e;"></i></a>
+
+
+
+
+
+      </div>
+      <div class="right d-flex gap-3 align-items-center">
+        <i class="fa-solid fa-wifi fa-xl" style="color: #af647e;"></i>
+        <i class="fa-solid fa-microphone-slash fa-xl" style="color: #af647e;"></i>
+        <i class="fa-solid fa-volume-xmark fa-xl" style="color: #af647e;"></i>
+        <div class=" text-dark" id="tarih"></div>
+      </div>
+
+
+
+    </nav>
+  </div>
+
+  <div id="kapatDivi" style="display: none; background-color: black;"
+    class="d-flex align-items-center justify-content-center">
+
+    <div class="alert alert-light fs-5" id="kapatalert" role="alert" style="display: none;">
+      Bilgisayar Kapatılıyor
+    </div>
+
+  </div>
+
+
+
+
+
+
+  <script src="./script.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
